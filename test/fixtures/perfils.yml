@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  usuario_id: 1
+  nome: MyString
+  aniversario: 2011-06-14
+  twitter: MyString
+
+two:
+  usuario_id: 1
+  nome: MyString
+  aniversario: 2011-06-14
+  twitter: MyString
