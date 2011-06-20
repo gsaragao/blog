@@ -1,35 +1,11 @@
-<p id="notice"><%= notice %></p>
+<%= render @artigo %>
 
+<div id="comentarios">
+	<h3>Comentários</h3>
+	<fieldset id="comentarios" class="comentarios">
+	<%= render @artigo.comentarios%>	
+	</fieldset>
+</div> 
 <p>
-  <b>Titulo:</b>
-  <%= @artigo.titulo %>
+<%= render :file  => 'comentarios/new' %>
 </p>
-
-<p>
-  <b>Corpo:</b>
-  <%= @artigo.corpo %>
-</p>
-
-<p>
-  <b>Publicacao:</b>
-  <%= @artigo.publicacao %>
-</p>
-
-<p>
-  <b>Resumo:</b>
-  <%= @artigo.resumo %>
-</p>
-
-<p>
-  <b>Localizacao:</b>
-  <%= @artigo.localizacao %>
-</p>
-
-<p>
-  <b>Usuario:</b>
-  <%= @artigo.usuario_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_artigo_path(@artigo) %> |
-<%= link_to 'Back', artigos_path %>

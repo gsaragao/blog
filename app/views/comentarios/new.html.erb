@@ -1,0 +1,18 @@
+
+<%= form_for([@artigo, @artigo.comentarios.new]) do |f| %>
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :corpo %><br />
+    <%= f.text_area :corpo %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Adicionar' %>
+  </div>
+<% end %>

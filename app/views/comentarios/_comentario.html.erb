@@ -1,0 +1,10 @@
+<%= div_for comentario do %>
+	<h3>
+		<%= comentario.nome %> &lt;<%= comentario.email %>&gt; disse: 
+		<span class='actions'>
+			<%= link_to "Delete", [@artigo, comentario], :confirm => "Confirma exclusão?", :method => :delete %>
+		</span>
+	</h3>
+	<%= comentario.corpo %>
+
+<% end %>

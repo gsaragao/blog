@@ -26,7 +26,7 @@ respond_to :html
     @artigo = Artigo.new(params[:artigo])
     
     if @artigo.save
-      flash[:notice] = "A artigo '#{@artigo.titulo}' foi criada com sucesso."
+      flash[:notice] = "O artigo '#{@artigo.titulo}' foi criada com sucesso."
       redirect_to artigos_path
     else
       render :action => :new 
@@ -38,7 +38,7 @@ respond_to :html
     @artigo = Artigo.find(params[:id])
 
     if @artigo.update_attributes(params[:artigo])
-      flash[:notice] = "A artigo '#{@artigo.titulo}' foi atualizado com sucesso."
+      flash[:notice] = "O artigo '#{@artigo.titulo}' foi atualizado com sucesso."
       redirect_to artigos_path
     else
       render :action => :edit
@@ -48,7 +48,7 @@ end
   def destroy
     @artigo = Artigo.find(params[:id])
     @artigo.destroy
-    flash[:notice] = "A artigo '#{@artigo.titulo}' foi excluída com sucesso."
+    flash[:notice] = "O artigo '#{@artigo.titulo}' foi excluída com sucesso."
     redirect_to artigos_path
   end
 end

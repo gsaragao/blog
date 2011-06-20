@@ -32,9 +32,13 @@
     <%= f.text_field :localizacao %>
   </div>
   <div class="field">
-    <%= f.label :usuario_id %><br />
-    <%= f.text_field :usuario_id %>
-  </div>
+    <%= f.label "Categorias" %><br />
+    <% for categoria in Categoria.all %>
+	   <%= check_box_tag 'artigo[categoria_ids][]', categoria.id, 
+	   @artigo.categoria_ids.include?(categoria.id), :id => dom_id(categoria) %>
+	   <%= label_tag dom_id(categoria), categoria.nome, :class => "check_box_label" %>	
+    <% end %>
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,7 +1,13 @@
 Blog::Application.routes.draw do
   root :to => "artigos#index"
-  resources :artigos
-
+  resources :artigos do
+    resources :comentarios
+  end  
+  resources :usuarios
+  resource :session
+  match '/login' => 'sessions#new', :as => "login"
+  match '/logout' => 'sessions#destroy', :as => "logout"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
