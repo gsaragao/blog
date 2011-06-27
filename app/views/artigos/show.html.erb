@@ -7,5 +7,5 @@
 	</fieldset>
 </div> 
 <p>
-<%= render :file  => 'comentarios/new' %>
+<%= link_to "Novo Comentário", new_artigo_comentario_path(@artigo, :format => :js), :remote => true, :id => 'new_comentario_link' %>
 </p>

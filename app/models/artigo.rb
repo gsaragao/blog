@@ -19,4 +19,9 @@ class Artigo < ActiveRecord::Base
       publicacao.present?
   end
   
+  def proprio?(proprio)
+      return false unless proprio.is_a? Usuario
+      usuario == proprio
+  end
+
 end

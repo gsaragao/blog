@@ -1,5 +1,6 @@
 # encoding : utf-8
 class UsuariosController < ApplicationController
+  before_filter :authenticate, :only => [:edit, :update]
 
   def index
     @usuarios = Usuario.all
@@ -19,11 +20,11 @@ class UsuariosController < ApplicationController
   end  
   
   def edit
-     @usuario = Usuario.find(params[:id])
+     @usuario = current_user
   end
   
   def update
-     @usuario = Usuario.find(params[:id])
+     @usuario = current_user
      if @usuario.update_attributes(params[:usuario])
          redirect_to usuarios_path, :notice  => 'Usuário atualizado com sucesso.' 
        else

@@ -17,14 +17,14 @@
   </div>
   <div class="field">
     <%= f.label :senha %><br />
-    <%= f.text_field :senha %>
+    <%= f.password_field :senha %>
   </div>
   <div class="field">
     <%= f.label :senha_confirmation %><br />
-    <%= f.text_field :senha_confirmation %>
+    <%= f.password_field :senha_confirmation %>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_or_cancel(f) %>
   </div>
 <% end %>

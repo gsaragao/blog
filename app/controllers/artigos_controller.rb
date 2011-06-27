@@ -1,7 +1,7 @@
 # encoding : utf-8
 class ArtigosController < ApplicationController
-
-respond_to :html
+  before_filter :authenticate, :except => [:index, :show]
+  respond_to :html
 
   def index
     @artigos = Artigo.all
@@ -19,11 +19,11 @@ respond_to :html
   end
 
   def edit
-    @artigo = Artigo.find(params[:id])
+    @artigo = current_user.artigos.find(params[:id])
   end
 
   def create
-    @artigo = Artigo.new(params[:artigo])
+    @artigo = current_user.artigos.new(params[:artigo])
     
     if @artigo.save
       flash[:notice] = "O artigo '#{@artigo.titulo}' foi criada com sucesso."
@@ -35,7 +35,7 @@ respond_to :html
   end
 
   def update
-    @artigo = Artigo.find(params[:id])
+    @artigo = current_user.artigos.find(params[:id])
 
     if @artigo.update_attributes(params[:artigo])
       flash[:notice] = "O artigo '#{@artigo.titulo}' foi atualizado com sucesso."
@@ -46,7 +46,7 @@ respond_to :html
 end
 
   def destroy
-    @artigo = Artigo.find(params[:id])
+    @artigo = current_user.artigos.find(params[:id])
     @artigo.destroy
     flash[:notice] = "O artigo '#{@artigo.titulo}' foi excluída com sucesso."
     redirect_to artigos_path

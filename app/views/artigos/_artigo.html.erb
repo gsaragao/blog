@@ -1,39 +1,13 @@
 <%= div_for artigo do %>
 	<h3>
 		<%= link_to artigo.titulo, artigo %>
-		<span class='actions'>
-			<%= link_to "Edit", edit_artigo_path(artigo) %>
-			<%= link_to "Delete", artigo, :confirm => "Confirma exclusão?", :method => :delete %>
-		</span>
+		<% if artigo.proprio? current_user %>
+			<span class='actions'>
+				<%= link_to "Edit", edit_artigo_path(artigo) %>
+				<%= link_to "Delete", artigo, :confirm => "Confirma exclusão?", :method => :delete %>
+			</span>
+		<% end %>
 	</h3>
-	<%= artigo.corpo %>
+	<%= simple_format artigo.corpo %>
 
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

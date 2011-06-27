@@ -3,15 +3,30 @@
 <head>
   <title>Blog</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery.min', 'rails', 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+	<div id="user_bar">
+		<%= link_to 'Home', root_path %> 
+		<% if logged_in? %>
+			| <%= link_to "Novo Artigo", new_artigo_path %> 
+		<% end %>		
+	</div>
+	<div id="header">
+		<h1><%= link_to 'Blog', root_path %></h1>
+		<span class="usuario">Olá <% if logged_in? %><%= link_to current_user.email, edit_usuario_path(current_user) %>,<%= link_to 'sair', :logout, :class => "login" %><% else %>Visitante,<%= link_to 'entrar', :login, :class => "login"  %></span><% end %>
+	</div>
 
-<%= content_tag :p, notice, :class => 'notice' if notice.present? %>
-<%= content_tag :p, alert, :class => 'alert' if alert.present? %>
-
-<%= yield %>
+	<div id="main">
+		<%= content_tag(:p, notice, :class => 'notice') if notice.present? %>
+		<%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
+		<%= yield %>
+	</div>
+	<div id="footer">
+		Acesse o site da Couggi e conheça um pouco de Rails 3
+		<a href="http://www.couggi.com">Couggi</a>
+	</div>
 
 </body>
 </html>

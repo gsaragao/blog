@@ -1,2 +1,2 @@
-module ArtigosHelper
+module ArtigosHelper  
 end
