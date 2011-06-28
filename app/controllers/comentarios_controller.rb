@@ -2,15 +2,17 @@
 class ComentariosController < ApplicationController
   before_filter :carrega_artigo, :except => :destroy
   before_filter :authenticate, :only => :destroy
-  
+  respond_to :html, :js
 
   def create
       @comentario = @artigo.comentarios.new(params[:comentario])
-
       if @comentario.save
-         redirect_to @artigo, :notice => 'Obrigado por seu comentário!'  
+         respond_with @artigo, :notice => 'Obrigado por seu comentário!'  
       else
-         redirect_to @artigo, :alert => 'Não permite comentário.'     
+         respond_with(@artigo) do |format|
+           format.html { redirect_to @artigo, :alert => 'Não permite comentário.'}
+           format.js { render 'fail_create.js.erb'}  
+         end
       end  
   end
 
@@ -18,7 +20,7 @@ class ComentariosController < ApplicationController
       @artigo = current_user.artigos.find(params[:artigo_id])
       @comentario = @artigo.comentarios.find(params[:id]) 
       @comentario.destroy
-      redirect_to @artigo, :notice => 'Comentário excluído com sucesso!'
+      respond_with @artigo, :notice => 'Comentário excluído com sucesso!'
   end
 
   private

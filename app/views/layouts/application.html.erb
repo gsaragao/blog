@@ -15,9 +15,8 @@
 	</div>
 	<div id="header">
 		<h1><%= link_to 'Blog', root_path %></h1>
-		<span class="usuario">Olá <% if logged_in? %><%= link_to current_user.email, edit_usuario_path(current_user) %>,<%= link_to 'sair', :logout, :class => "login" %><% else %>Visitante,<%= link_to 'entrar', :login, :class => "login"  %></span><% end %>
+		<span class="usuario">Olá <% if logged_in? %><%= link_to current_user.email, edit_usuario_path(current_user) %>,<%= link_to 'sair', :logout, :class => "login" %><% else %>Visitante,(<%= link_to 'entrar', :login, :class => "login"  %>|<%= link_to 'cadastrar', new_usuario_path, :class => "login"  %>)</span><% end %>
 	</div>
-
 	<div id="main">
 		<%= content_tag(:p, notice, :class => 'notice') if notice.present? %>
 		<%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
@@ -27,6 +26,5 @@
 		Acesse o site da Couggi e conheça um pouco de Rails 3
 		<a href="http://www.couggi.com">Couggi</a>
 	</div>
-
 </body>
 </html>

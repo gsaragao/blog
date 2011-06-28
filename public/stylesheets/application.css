@@ -64,6 +64,16 @@ a:hover {
   font-size: 11px;
 }
 
+.publicacao {
+  /* margin-top: 10px;
+  clear:both;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 8px;	
+  padding-top: 10px;
+  height: 20px; */
+}
+
 #header h1 {
   padding-top: 18px;
   float: left;
@@ -151,7 +161,7 @@ a:hover {
 #main form input[type=text], #main form input[type=password], #main form textarea {
   float: left;
   font-size: 14px;
-  width: 250px;
+  width: 550px;
   padding: 2px;
   border: 2px solid #ccc;
 }

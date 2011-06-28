@@ -1,5 +1,5 @@
 
-<%= form_for([@artigo, @artigo.comentarios.new]) do |f| %>
+<%= form_for([@artigo, @artigo.comentarios.new], :remote => true,  :html  => {:style => 'display: none;'}) do |f| %>
   <div class="field">
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>

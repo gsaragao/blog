@@ -1,12 +1,13 @@
 <%= div_for comentario do %>
-	<h3>
-		<%= comentario.nome %> &lt;<%= comentario.email %>&gt; disse: 
+	<p>
+		<b><%= comentario.nome %> &lt;<%= comentario.email %>&gt; disse:</b> 
 		<% if @artigo.proprio? current_user %>
 			<span class='actions'>
-				<%= link_to "Delete", [@artigo, comentario], :confirm => "Confirma exclusão?", :method => :delete %>
+				<%= link_to "Delete", [@artigo, comentario], :confirm => "Confirma exclusão?", :method => :delete, :remote  => true %>
 			</span>
 		<% end %>	
-	</h3>
-	<%= comentario.corpo %>
-
+	</p>
+    <p>
+		<%= comentario.corpo %>	
+	</p>	
 <% end %>
