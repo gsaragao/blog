@@ -1,6 +1,9 @@
 Blog::Application.routes.draw do
   root :to => "artigos#index"
   resources :artigos do
+    member  do
+      post :notify_friend
+    end  
     resources :comentarios
   end  
   resources :usuarios

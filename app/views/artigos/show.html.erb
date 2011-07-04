@@ -1,5 +1,8 @@
 <%= render @artigo %>
 
+<%= link_to "Email para amigo", "#", :onclick => "$('#notify_friend_form').slideDown()" %>
+<%= render 'notify_friend' %>
+
 <div id="comentarios">
 	<h3>Comentários</h3>
 	<fieldset id="fscomentarios" class="comentarios">

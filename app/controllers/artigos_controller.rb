@@ -1,6 +1,6 @@
 # encoding : utf-8
 class ArtigosController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate, :except => [:index, :show, :notify_friend]
   respond_to :html
 
   def index
@@ -50,5 +50,11 @@ end
     @artigo.destroy
     flash[:notice] = "O artigo '#{@artigo.titulo}' foi excluída com sucesso."
     redirect_to artigos_path
+  end
+  
+  def notify_friend
+    @artigo = Artigo.find(params[:id])
+    Notifier.email_friend(@artigo, params[:name], params[:email]).deliver
+    redirect_to @artigo, :notice => "Successfully sent a message to your friend"
   end
 end
